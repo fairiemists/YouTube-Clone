@@ -13,6 +13,17 @@ def get_all_comments(request):
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_all_video_comments(request, videoId):
+    comments = Comment.objects.filter(video_id=videoId)
+    if request.method == 'GET': 
+        try: 
+            serializer = CommentSerializer(comments, many=True)
+            return Response(serializer.data)
+        except Comment.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 
 @api_view(['GET', 'POST'])
