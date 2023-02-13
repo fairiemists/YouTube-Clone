@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "886a94ed-8211-4267-9b30-a252e4f637c6",
+		"name": "YouTube_Clone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22377051"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"charligrrl\",\r\n    \"password\": \"password1@\",\r\n    \"email\": \"charli.dewey@gmail.com\",\r\n    \"first_name\": \"Charli\",\r\n    \"last_name\": \"Dewey\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/auth/register/"
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Charligrrl\",\r\n    \"password\": \"password1@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/auth/login/"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh_Access",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3ODA0MTk3NCwiaWF0IjoxNjc2MzEzOTc0LCJqdGkiOiIzNjg5NmE3MTFlZTE0YzA0YTNkMGNiNmQzYmFhM2I2OCIsInVzZXJfaWQiOjIsInVzZXJuYW1lIjoiTmVzc2EiLCJmaXJzdF9uYW1lIjoiVmFuZXNzYSJ9.bnmmH7VDw4zbFl_dqvOxSUqKp-z9iXMsSPPoBVjGvis\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/auth/login/refresh/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Get_All_Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/comment/all/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get_All_Comments_By_Video",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/comment/MBs-rQluA1Q"
+					},
+					"response": []
+				},
+				{
+					"name": "GET_Comments_By_User (protected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NjYxOTY1LCJpYXQiOjE2NzU3OTc5NjUsImp0aSI6IjYwNjc2YjlkMWY0MjQ0OWU4ZjRkNjcwOTkwZTU2NWI3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJOZXNzYSIsImZpcnN0X25hbWUiOiJWYW5lc3NhIn0.61FbMAZIhV62ii7o-mU_Z9GozhCtcb4bS9ltu9QyOo4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/comment/"
+					},
+					"response": []
+				},
+				{
+					"name": "POST_User_Comment (protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3MTc4MTg2LCJpYXQiOjE2NzYzMTQxODYsImp0aSI6IjRlYThjNWMzY2MzZTQ2NDdhZjI4M2NjYWE4NGJmMzg0IiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJjaGFybGlncnJsIiwiZmlyc3RfbmFtZSI6IkNoYXJsaSJ9.eeuE6X1WWZydJ72hDUZzg6tVcIvI4dzg8v64qZTyfo0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"video_id\": \"MBs-rQluA1Q\",\n    \"text\": \"Me too!\",\n    \"likes\": 0,\n    \"dislikes\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/comment/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Videos",
+			"item": [
+				{
+					"name": "Video Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?q=epic+npc+man&part=snippet&key=AIzaSyAqtW-jkZPYBn_L4jlfiM7wqzxT6yymQts&maxResults=5",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "epic+npc+man"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyAqtW-jkZPYBn_L4jlfiM7wqzxT6yymQts"
+								},
+								{
+									"key": "maxResults",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=UKmF8wWKMlk&key=AIzaSyAqtW-jkZPYBn_L4jlfiM7wqzxT6yymQts",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "id",
+									"value": "UKmF8wWKMlk"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyAqtW-jkZPYBn_L4jlfiM7wqzxT6yymQts"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Related videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAqtW-jkZPYBn_L4jlfiM7wqzxT6yymQts&part=snippet&type=video&maxResults=5&relatedToVideoId=UKmF8wWKMlk",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "AIzaSyAqtW-jkZPYBn_L4jlfiM7wqzxT6yymQts"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "type",
+									"value": "video"
+								},
+								{
+									"key": "maxResults",
+									"value": "5"
+								},
+								{
+									"key": "relatedToVideoId",
+									"value": "UKmF8wWKMlk"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
